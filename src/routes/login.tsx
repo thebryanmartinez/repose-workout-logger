@@ -1,16 +1,10 @@
-import {
-  createFileRoute,
-  redirect,
-  useNavigate,
-  Link,
-} from '@tanstack/react-router'
+import { createFileRoute, redirect, Link } from '@tanstack/react-router'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { z } from 'zod'
-import { useConvex } from 'convex/react'
 
-import { api } from '../../convex/_generated/api'
-import { saveUser } from '#/modules/auth/hooks/useAuth'
+import { loginSchema, type LoginFormValues } from '#/modules/auth/forms/login.schema'
+import { useAuth } from '#/modules/auth/hooks/useAuth'
+import { authStrings } from '#/modules/auth/localization'
 import {
   Card,
   CardHeader,
@@ -28,12 +22,6 @@ import {
 import { Input } from '#/modules/shared/ui/input'
 import { Button } from '#/modules/shared/ui/button'
 
-const schema = z.object({
-  username: z.string().min(1, 'Username is required'),
-})
-
-type FormValues = z.infer<typeof schema>
-
 export const Route = createFileRoute('/login')({
   beforeLoad: () => {
     if (typeof window !== 'undefined' && localStorage.getItem('username')) {
@@ -44,27 +32,14 @@ export const Route = createFileRoute('/login')({
 })
 
 function LoginPage() {
-  const convex = useConvex()
-  const navigate = useNavigate()
+  const { login } = useAuth()
 
   const {
     register,
     handleSubmit,
     setError,
     formState: { errors, isSubmitting },
-  } = useForm<FormValues>({ resolver: zodResolver(schema) })
-
-  async function onSubmit({ username }: FormValues) {
-    const user = await convex.query(api.users.getByUsername, { username })
-    if (user) {
-      saveUser(username)
-      navigate({ to: '/' })
-    } else {
-      setError('username', {
-        message: 'Username not found. Please check and try again.',
-      })
-    }
-  }
+  } = useForm<LoginFormValues>({ resolver: zodResolver(loginSchema) })
 
   return (
     <div
@@ -74,15 +49,15 @@ function LoginPage() {
       <Card className="w-full max-w-sm">
         <CardHeader>
           <CardTitle className="text-xl" style={{ color: 'var(--sea-ink)' }}>
-            Welcome back
+            {authStrings.login.title}
           </CardTitle>
-          <CardDescription>Sign in to your Repose account</CardDescription>
+          <CardDescription>{authStrings.login.subtitle}</CardDescription>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleSubmit(onSubmit)} noValidate>
+          <form onSubmit={handleSubmit((values) => login(values, setError))} noValidate>
             <FieldGroup>
               <Field>
-                <FieldLabel htmlFor="username">Username</FieldLabel>
+                <FieldLabel htmlFor="username">{authStrings.login.usernameLabel}</FieldLabel>
                 <Input
                   id="username"
                   autoComplete="username"
@@ -97,18 +72,18 @@ function LoginPage() {
               disabled={isSubmitting}
               style={{ background: 'var(--lagoon)' }}
             >
-              {isSubmitting ? 'Signing in…' : 'Sign in'}
+              {isSubmitting ? authStrings.login.submitLoading : authStrings.login.submitIdle}
             </Button>
           </form>
         </CardContent>
         <CardFooter className="justify-center text-sm text-muted-foreground">
-          No account?&nbsp;
+          {authStrings.login.noAccount}
           <Link
             to="/register"
             className="font-medium hover:underline"
             style={{ color: 'var(--lagoon-deep)' }}
           >
-            Register
+            {authStrings.login.registerLink}
           </Link>
         </CardFooter>
       </Card>
