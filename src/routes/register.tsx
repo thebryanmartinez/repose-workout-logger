@@ -1,9 +1,10 @@
-import { createFileRoute, redirect, Link } from '@tanstack/react-router'
+import { createFileRoute, Link, useNavigate } from '@tanstack/react-router'
+import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 
 import { registerSchema, type RegisterFormValues } from '#/modules/auth/forms/register.schema'
-import { useAuth } from '#/modules/auth/hooks/useAuth'
+import { useAuth, getStoredUser } from '#/modules/auth/hooks/useAuth'
 import { authStrings } from '#/modules/auth/localization'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '#/modules/shared/ui/card'
 import { Field, FieldGroup, FieldLabel, FieldError } from '#/modules/shared/ui/field'
@@ -11,16 +12,18 @@ import { Input } from '#/modules/shared/ui/input'
 import { Button } from '#/modules/shared/ui/button'
 
 export const Route = createFileRoute('/register')({
-  beforeLoad: () => {
-    if (typeof window !== 'undefined' && localStorage.getItem('username')) {
-      throw redirect({ to: '/' })
-    }
-  },
   component: RegisterPage,
 })
 
 function RegisterPage() {
+  const navigate = useNavigate()
   const { register: registerUser } = useAuth()
+
+  useEffect(() => {
+    if (getStoredUser()) {
+      navigate({ to: '/', replace: true })
+    }
+  }, [])
 
   const {
     register,

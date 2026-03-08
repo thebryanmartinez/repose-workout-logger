@@ -1,9 +1,10 @@
-import { createFileRoute, redirect, Link } from '@tanstack/react-router'
+import { createFileRoute, Link, useNavigate } from '@tanstack/react-router'
+import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 
 import { loginSchema, type LoginFormValues } from '#/modules/auth/forms/login.schema'
-import { useAuth } from '#/modules/auth/hooks/useAuth'
+import { useAuth, getStoredUser } from '#/modules/auth/hooks/useAuth'
 import { authStrings } from '#/modules/auth/localization'
 import {
   Card,
@@ -23,16 +24,18 @@ import { Input } from '#/modules/shared/ui/input'
 import { Button } from '#/modules/shared/ui/button'
 
 export const Route = createFileRoute('/login')({
-  beforeLoad: () => {
-    if (typeof window !== 'undefined' && localStorage.getItem('username')) {
-      throw redirect({ to: '/' })
-    }
-  },
   component: LoginPage,
 })
 
 function LoginPage() {
+  const navigate = useNavigate()
   const { login } = useAuth()
+
+  useEffect(() => {
+    if (getStoredUser()) {
+      navigate({ to: '/', replace: true })
+    }
+  }, [])
 
   const {
     register,
