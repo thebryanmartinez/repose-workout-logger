@@ -14,6 +14,13 @@ export const getByUsername = query({
 export const create = mutation({
   args: { name: v.string(), username: v.string() },
   handler: async (ctx, { name, username }) => {
+    const existing = await ctx.db
+      .query('users')
+      .withIndex('by_username', (q) => q.eq('username', username))
+      .unique()
+    if (existing) {
+      throw new Error(`Username "${username}" is already taken`)
+    }
     return await ctx.db.insert('users', { name, username })
   },
 })
