@@ -1,20 +1,125 @@
 schema: spec-driven
 
-# Project context (optional)
-# This is shown to AI when creating artifacts.
-# Add your tech stack, conventions, style guides, domain knowledge, etc.
-# Example:
-#   context: |
-#     Tech stack: TypeScript, React, Node.js
-#     We use conventional commits
-#     Domain: e-commerce platform
+context: |
+  Project: Simple Workout Logger (PWA)
 
-# Per-artifact rules (optional)
-# Add custom rules for specific artifacts.
-# Example:
-#   rules:
-#     proposal:
-#       - Keep proposals under 500 words
-#       - Always include a "Non-goals" section
-#     tasks:
-#       - Break tasks into chunks of max 2 hours
+  Goal:
+  Build a beginner-friendly workout logger focused on simplicity and speed when logging workouts.
+  The application allows users to create workout routines and quickly execute them daily.
+
+  Core Philosophy:
+  - Extreme simplicity
+  - Minimal friction when logging sets
+  - Beginner-friendly experience
+  - Offline-first architecture
+
+  Primary Features:
+  - Create workout routines
+  - Log workouts from saved routines
+  - Track workout streaks
+  - Timer between sets
+
+  User Flow:
+  Open App
+  → Create Routine (Exercises, Sets, Weight, Reps, Workout Day)
+  → Start Workout
+  → Log Sets Quickly (Next Set / Next Exercise)
+  → Finish Workout
+  → Workout Completion Saved for Streak Tracking
+
+  Data Model (Conceptual):
+  Routine
+    - id
+    - name
+    - exercises[]
+
+  Exercise
+    - id
+    - name
+    - sets[]
+
+  Set
+    - weight
+    - reps
+    - time (optional for timed exercises)
+
+  WorkoutSession
+    - routineId
+    - date
+    - completedSets[]
+
+  Streak
+    - lastWorkoutDate
+    - currentStreakCount
+
+  Tech Stack:
+  - React
+  - Vite
+  - TypeScript (strict mode)
+  - Zustand (state management)
+  - TailwindCSS
+  - Shadcn UI components
+
+  Architecture:
+  - Feature-based folder structure
+  - Client-only architecture
+  - Mobile-first design
+  - Progressive Web App (PWA)
+
+  Storage Strategy:
+  - IndexedDB used by default for offline-first data persistence
+  - When user authenticates, data syncs with Convex backend
+  - Convex used only for authenticated users and cross-device syncing
+
+  Design:
+  - UI already designed in Pencil.dev
+  - Interface optimized for fast workout logging
+  - Mobile-first layout
+  - Clean and minimal interface
+
+  Exercise System:
+  - Exercises are user-created
+  - No predefined exercise database
+  - Exercises belong to routines
+
+  Supported Set Types:
+  - Reps + Weight
+  - Time (for timed exercises)
+
+  State Management:
+  - Zustand used for application state
+
+  Testing:
+  - Unit tests with Vitest
+
+  Development Standards:
+  - Strict TypeScript enabled
+  - ESLint enabled via Vite
+  - Maintain simple and readable code
+  - Prefer small, focused components
+  - Avoid overengineering
+
+  Product Principles:
+  - Prioritize speed when logging workouts
+  - Minimize number of screens and steps
+  - Avoid unnecessary complexity
+
+rules:
+  proposal:
+    - Keep proposals concise and implementation focused
+    - Always include the following sections:
+      - Problem
+      - Proposed Solution
+      - UX Flow
+      - Technical Approach
+      - Non-goals
+
+  tasks:
+    - Tasks should be implementation-focused
+    - Tasks should reference the feature they belong to
+    - Tasks must include clear acceptance criteria
+
+  specs:
+    - Specs should prioritize simplicity
+    - Avoid adding features outside the defined MVP
+    - Prefer straightforward implementations over complex abstractions
