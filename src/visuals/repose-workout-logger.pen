@@ -88,16 +88,6 @@
                       "letterSpacing": -0.3
                     }
                   ]
-                },
-                {
-                  "type": "icon_font",
-                  "id": "0A8PE",
-                  "name": "bellIcon",
-                  "width": 22,
-                  "height": 22,
-                  "iconFontName": "bell",
-                  "iconFontFamily": "lucide",
-                  "fill": "#000000"
                 }
               ]
             },
@@ -1212,7 +1202,8 @@
                           "fill": "#757575",
                           "content": "5 exercises",
                           "fontFamily": "DM Sans",
-                          "fontSize": 14
+                          "fontSize": 14,
+                          "fontWeight": "normal"
                         }
                       ]
                     },
@@ -1267,7 +1258,8 @@
                           "fill": "#757575",
                           "content": "4 exercises",
                           "fontFamily": "DM Sans",
-                          "fontSize": 14
+                          "fontSize": 14,
+                          "fontWeight": "normal"
                         }
                       ]
                     },
@@ -1322,7 +1314,8 @@
                           "fill": "#757575",
                           "content": "6 exercises",
                           "fontFamily": "DM Sans",
-                          "fontSize": 14
+                          "fontSize": 14,
+                          "fontWeight": "normal"
                         }
                       ]
                     },
@@ -1717,7 +1710,8 @@
                           "fill": "#A3A3A3",
                           "content": "5 exercises",
                           "fontFamily": "DM Sans",
-                          "fontSize": 14
+                          "fontSize": 14,
+                          "fontWeight": "normal"
                         }
                       ]
                     },
@@ -1772,7 +1766,8 @@
                           "fill": "#A3A3A3",
                           "content": "4 exercises",
                           "fontFamily": "DM Sans",
-                          "fontSize": 14
+                          "fontSize": 14,
+                          "fontWeight": "normal"
                         }
                       ]
                     },
@@ -1827,7 +1822,8 @@
                           "fill": "#A3A3A3",
                           "content": "6 exercises",
                           "fontFamily": "DM Sans",
-                          "fontSize": 14
+                          "fontSize": 14,
+                          "fontWeight": "normal"
                         }
                       ]
                     },
@@ -2246,7 +2242,8 @@
                           "fill": "#BDBDBD",
                           "content": "e.g. Push Day",
                           "fontFamily": "DM Sans",
-                          "fontSize": 15
+                          "fontSize": 15,
+                          "fontWeight": "normal"
                         }
                       ]
                     }
@@ -2762,7 +2759,8 @@
                           "fill": "#757575",
                           "content": "e.g. Push Day",
                           "fontFamily": "DM Sans",
-                          "fontSize": 15
+                          "fontSize": 15,
+                          "fontWeight": "normal"
                         }
                       ]
                     }
@@ -5071,7 +5069,8 @@
                       "fill": "#757575",
                       "content": "Great job! You crushed it.",
                       "fontFamily": "DM Sans",
-                      "fontSize": 15
+                      "fontSize": 15,
+                      "fontWeight": "normal"
                     }
                   ]
                 },
@@ -5308,7 +5307,8 @@
                       "fill": "#757575",
                       "content": "Your longest streak yet!",
                       "fontFamily": "DM Sans",
-                      "fontSize": 15
+                      "fontSize": 15,
+                      "fontWeight": "normal"
                     }
                   ]
                 }
@@ -5514,7 +5514,8 @@
                       "fill": "#A3A3A3",
                       "content": "Great job! You crushed it.",
                       "fontFamily": "DM Sans",
-                      "fontSize": 15
+                      "fontSize": 15,
+                      "fontWeight": "normal"
                     }
                   ]
                 },
@@ -5751,7 +5752,8 @@
                       "fill": "#A3A3A3",
                       "content": "Your longest streak yet!",
                       "fontFamily": "DM Sans",
-                      "fontSize": 15
+                      "fontSize": 15,
+                      "fontWeight": "normal"
                     }
                   ]
                 }
@@ -5985,7 +5987,8 @@
                               "fill": "#757575",
                               "content": "john@example.com",
                               "fontFamily": "DM Sans",
-                              "fontSize": 13
+                              "fontSize": 13,
+                              "fontWeight": "normal"
                             }
                           ]
                         }
@@ -6198,6 +6201,7 @@
                           "name": "syncSwitch",
                           "x": 294,
                           "y": 14,
+                          "width": "fit_content",
                           "descendants": {
                             "W:HsFun": {
                               "enabled": false
@@ -6243,7 +6247,8 @@
                           "fill": "#757575",
                           "content": "Last synced: 2 hours ago",
                           "fontFamily": "DM Sans",
-                          "fontSize": 13
+                          "fontSize": 13,
+                          "fontWeight": "normal"
                         }
                       ]
                     }
@@ -6330,6 +6335,7 @@
                           "name": "darkSwitch",
                           "x": 294,
                           "y": 14,
+                          "width": "fit_content",
                           "descendants": {
                             "W:HsFun": {
                               "enabled": false
@@ -6394,6 +6400,7 @@
                           "name": "notifSwitch",
                           "x": 294,
                           "y": 14,
+                          "width": "fit_content",
                           "descendants": {
                             "W:HsFun": {
                               "enabled": false
@@ -6485,7 +6492,8 @@
                           "fill": "#BDBDBD",
                           "content": "1.0.0",
                           "fontFamily": "DM Sans",
-                          "fontSize": 14
+                          "fontSize": 14,
+                          "fontWeight": "normal"
                         }
                       ]
                     },
@@ -6990,7 +6998,8 @@
                               "fill": "#a3a3a3",
                               "content": "john@example.com",
                               "fontFamily": "DM Sans",
-                              "fontSize": 13
+                              "fontSize": 13,
+                              "fontWeight": "normal"
                             }
                           ]
                         }
@@ -7201,6 +7210,7 @@
                           "name": "syncSwitchD",
                           "x": 294,
                           "y": 12,
+                          "width": "fit_content",
                           "descendants": {
                             "W:HsFun": {
                               "enabled": false
@@ -7246,7 +7256,8 @@
                           "fill": "#a3a3a3",
                           "content": "Last synced: 2 hours ago",
                           "fontFamily": "DM Sans",
-                          "fontSize": 13
+                          "fontSize": 13,
+                          "fontWeight": "normal"
                         }
                       ]
                     }
@@ -7333,6 +7344,7 @@
                           "name": "darkSwitchD",
                           "x": 294,
                           "y": 12,
+                          "width": "fit_content",
                           "descendants": {
                             "W:HsFun": {
                               "enabled": false
@@ -7397,6 +7409,7 @@
                           "name": "notifSwitchD",
                           "x": 294,
                           "y": 12,
+                          "width": "fit_content",
                           "descendants": {
                             "W:HsFun": {
                               "enabled": false
@@ -7488,7 +7501,8 @@
                           "fill": "#757575",
                           "content": "1.0.0",
                           "fontFamily": "DM Sans",
-                          "fontSize": 14
+                          "fontSize": 14,
+                          "fontWeight": "normal"
                         }
                       ]
                     },
